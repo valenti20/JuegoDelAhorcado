@@ -1,25 +1,28 @@
-/*VARIABLES*/ 
 var palabras = ["CSS", "ALURA", "HTML", "JAVASCRIPT", "FUTURO", "ORACLE"];
 var pizarra = document.getElementById("pizarra").getContext("2d");
 var letras = [];
 var palabraAcertada = "";
-var error = 9;
+var error = 9
 
-/*AGREGAR*/
-function agregarPalabra(){
-    const agregar = document.getElementById('agregar').focus();
-    let palabraAgregada = agregar.value;
-    let obtener = localStorage.setItem('lista', JSON.stringify(palabraAgregada));
-    let lista = [obtener];
-    console.log(lista);
-    let agregando = palabras.push.apply(lista);
+function btnGuardar(){
+    let agregar = document.querySelector("#agregar");
+    let addToJSON = JSON.stringify(agregar.value);
+    localStorage.setItem("dataWord", addToJSON);
+    let add = localStorage.getItem("dataWord");
+    console.log(add);
+    let addToJS = JSON.parse(addToJSON);
+    console.log(addToJS);
+    palabras.push(addToJS);
     console.log(palabras);
-    agregar.value = ' ';
-}agregarPalabra()
-
+    let listaToJson = JSON.stringify(palabras);
+    console.log(listaToJson);
+    localStorage.setItem("lista", listaToJson);
+}
+let lista = localStorage.getItem("lista");
+let listaToJS = JSON.parse(listaToJson);
+console.log(listaToJS);
 console.log(palabras);
 
-/*PALABRA SECRETA*/
 function palabraElegida(){
     var palabra = palabras[Math.floor(Math.random()*palabras.length)]
     palabraSecreta = palabra
@@ -106,3 +109,22 @@ function agregarLetraIncorrecta(letter){
     }
 }
 
+function refresh(){
+    location.reload();
+}
+function desistir(){
+    pizarra.clearRect(0,0,1200,860);
+    pizarra.font = "bold 100px DynaPuff";
+    pizarra.lineWidth = 6
+    pizarra.lineCap = "round"
+    pizarra.lineJoin = "round"
+    pizarra.fillStyle = "#c02a2a"
+    pizarra.fillText("Fin Del Juego",300,430);
+
+    pizarra.font = "bold 50px DynaPuff";
+    pizarra.lineWidth = 6
+    pizarra.lineCap = "round"
+    pizarra.lineJoin = "round"
+    pizarra.fillStyle = "#c02a2a"
+    pizarra.fillText("La palabra secreta era: " + palabraSecreta,300,530);
+}

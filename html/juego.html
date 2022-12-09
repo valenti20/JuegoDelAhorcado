@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego del Ahorcado</title>
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
@@ -12,12 +12,18 @@
         <img src="learning">
     </header>
     <main>
-        <button id="btnJuego"><a href="juego.html">Iniciar Juego</a></button>
-        <button id="btnAnadir"><a href="añadir.html">Agregar nueva palabra</a></button>
+        <div id="ahorcado" class="ahorcado">
+            <canvas id="pizarra" height="860px" width="1200"></canvas>
+        </div>
+        <button onclick="refresh()">Nuevo Juego</button>
+        <button onclick="desistir()">Desistir</button>
     </main>
     <footer>
         <h4> &copy Maciel Abril Valentina, 2022</h4>
-        <img src="small_town">
+        <img src="exams">
     </footer>
+    <script src="../js/juego.js"></script>
+    <script src="../js/horca.js"></script>
+    <script src="../js/añadir.js"></script>
 </body>
 </html>
